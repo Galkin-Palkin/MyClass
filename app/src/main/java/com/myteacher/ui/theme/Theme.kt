@@ -1,54 +1,18 @@
 package com.myteacher.ui.theme
 
-import android.widget.ToggleButton
+import ThemeTypography
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.shape.ZeroCornerSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
-import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-
-@Immutable
-data class ThemeColors(
-    val surface: Color,
-    val primary: Color,
-    val primaryText: Color,
-    val header: Color,
-    val border: Color,
-    val primaryBackground: Color,
-    val secondaryBackground: Color,
-    val onPrimary: Color,
-    val toggleButtonBackground: Color,
-    val blockedToggleButtonBackground: Color,
-    val inputFieldBackground: Color,
-)
-
-@Immutable
-data class ThemeTypography(
-    val h1: TextStyle,
-    val h2: TextStyle,
-    val h3: TextStyle,
-    val h4: TextStyle,
-    val default: TextStyle,
-    val button: TextStyle,
-    val menuText: TextStyle,
-    val selectedMenuText: TextStyle,
-    val inputFieldInnerText: TextStyle,
-    val inputFieldHeader: TextStyle,
-    val dropDownMenuText: TextStyle,
-)
-
-@Immutable
-data class CustomElevation(
-    val default: Dp,
-    val pressed: Dp
-)
 
 val LocalThemeColors = staticCompositionLocalOf {
     ThemeColors(
@@ -61,8 +25,9 @@ val LocalThemeColors = staticCompositionLocalOf {
         secondaryBackground = Color.Unspecified,
         onPrimary = Color.Unspecified,
         toggleButtonBackground = Color.Unspecified,
-        blockedToggleButtonBackground = BlockedToggleButtonBackgroundColor,
+        blockedToggleButtonBackground = Color.Unspecified,
         inputFieldBackground = Color.Unspecified,
+        bottomMenu = Color.Unspecified,
     )
 }
 
@@ -82,16 +47,24 @@ val LocalThemeTypography = staticCompositionLocalOf {
     )
 }
 
-val LocalCustomElevation = staticCompositionLocalOf {
-    CustomElevation(
+val LocalThemeElevation = staticCompositionLocalOf {
+    ThemeElevation(
         default = Dp.Unspecified,
-        pressed = Dp.Unspecified
+        dialog = Dp.Unspecified
+    )
+}
+
+val LocalThemeShapes = staticCompositionLocalOf {
+    ThemeShapes(
+        default = RoundedCornerShape(ZeroCornerSize),
+        button = RoundedCornerShape(ZeroCornerSize),
+        textField = RoundedCornerShape(ZeroCornerSize),
+        upperMenu = RoundedCornerShape(ZeroCornerSize),
     )
 }
 
 @Composable
-fun CustomTheme(
-
+fun Theme(
     content: @Composable () -> Unit
 ) {
     val themeColors = ThemeColors(
@@ -106,6 +79,7 @@ fun CustomTheme(
         toggleButtonBackground = ToggleButtonBackgroundColor,
         blockedToggleButtonBackground = BlockedToggleButtonBackgroundColor,
         inputFieldBackground = InputFieldBackgroundColor,
+        bottomMenu = BottomMenuColor
     )
 
     val themeTypography = ThemeTypography(
@@ -126,27 +100,41 @@ fun CustomTheme(
         ),
     )
 
-    val customElevation = CustomElevation(
+    val themeElevation = ThemeElevation(
         default = 4.dp,
-        pressed = 8.dp
+        dialog = 8.dp
+    )
+
+    val themeShapes = ThemeShapes(
+        default = RoundedCornerShape(8.dp),
+        button = RoundedCornerShape(8.dp),
+        textField = RoundedCornerShape(16.dp),
+        upperMenu = RoundedCornerShape(0.dp, 0.dp, 8.dp, 8.dp),
     )
 
     CompositionLocalProvider(
         LocalThemeColors provides themeColors,
         LocalThemeTypography provides themeTypography,
-        LocalCustomElevation provides customElevation,
+        LocalThemeElevation provides themeElevation,
+        LocalThemeShapes provides themeShapes,
         content = content
     )
 }
 
-object CustomTheme {
+object Theme {
     val colors: ThemeColors
         @Composable
         get() = LocalThemeColors.current
+
     val typography: ThemeTypography
         @Composable
         get() = LocalThemeTypography.current
-    val elevation: CustomElevation
+
+    val elevation: ThemeElevation
         @Composable
-        get() = LocalCustomElevation.current
+        get() = LocalThemeElevation.current
+
+    val shapes: ThemeShapes
+        @Composable
+        get() = LocalThemeShapes.current
 }
