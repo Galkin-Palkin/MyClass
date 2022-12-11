@@ -87,16 +87,48 @@ fun Theme(
         h2 = TextStyle(fontSize = 32.sp, fontWeight = FontWeight.Bold),
         h3 = TextStyle(fontSize = 28.sp, fontWeight = FontWeight.Bold),
         h4 = TextStyle(fontSize = 24.sp, fontWeight = FontWeight.Bold),
-        default = TextStyle(fontSize = 20.sp, fontWeight = FontWeight.Bold),
-        button = TextStyle(fontSize = 28.sp, fontWeight = FontWeight.Bold),
-        menuText = TextStyle(fontSize = 24.sp, fontWeight = FontWeight.Bold),
-        selectedMenuText = TextStyle(fontSize = 36.sp, fontWeight = FontWeight.Black),
-        inputFieldInnerText = TextStyle(fontSize = 24.sp, fontWeight = FontWeight.Bold),
-        inputFieldHeader = TextStyle(fontSize = 20.sp, fontWeight = FontWeight.Bold),
+
+        default = TextStyle(
+            fontSize = 20.sp,
+            fontWeight = FontWeight.Bold,
+            color = PrimaryTextColor
+        ),
+
+        button = TextStyle(
+            fontSize = 28.sp,
+            fontWeight = FontWeight.Bold,
+            color = Color.White
+        ),
+
+        menuText = TextStyle(
+            fontSize = 24.sp,
+            fontWeight = FontWeight.Bold,
+            color = PrimaryTextColor
+        ),
+
+        selectedMenuText = TextStyle(
+            fontSize = 36.sp,
+            fontWeight = FontWeight.Black,
+            color = PrimaryColor
+        ),
+
+        inputFieldInnerText = TextStyle(
+            fontSize = 24.sp,
+            fontWeight = FontWeight.Bold,
+            color = PrimaryTextColor
+        ),
+
+        inputFieldHeader = TextStyle(
+            fontSize = 20.sp,
+            fontWeight = FontWeight.Bold,
+            color = PrimaryTextColor
+        ),
+
         dropDownMenuText = TextStyle(
             fontSize = 20.sp,
             fontWeight = FontWeight.Bold,
-            textDecoration = TextDecoration.Underline
+            textDecoration = TextDecoration.Underline,
+            color = PrimaryTextColor
         ),
     )
 
