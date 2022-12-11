@@ -3,10 +3,10 @@ import androidx.compose.ui.text.TextStyle
 
 @Immutable
 data class ThemeTypography(
-    val h1: TextStyle,
     val h2: TextStyle,
     val h3: TextStyle,
     val h4: TextStyle,
+    val h5: TextStyle,
     val default: TextStyle,
     val button: TextStyle,
     val menuText: TextStyle,

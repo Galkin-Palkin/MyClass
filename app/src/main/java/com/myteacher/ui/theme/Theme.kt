@@ -33,10 +33,10 @@ val LocalThemeColors = staticCompositionLocalOf {
 
 val LocalThemeTypography = staticCompositionLocalOf {
     ThemeTypography(
-        h1 = TextStyle.Default,
         h2 = TextStyle.Default,
         h3 = TextStyle.Default,
         h4 = TextStyle.Default,
+        h5 = TextStyle.Default,
         default = TextStyle.Default,
         button = TextStyle.Default,
         menuText = TextStyle.Default,
@@ -83,10 +83,10 @@ fun Theme(
     )
 
     val themeTypography = ThemeTypography(
-        h1 = TextStyle(fontSize = 36.sp, fontWeight = FontWeight.Bold),
-        h2 = TextStyle(fontSize = 32.sp, fontWeight = FontWeight.Bold),
-        h3 = TextStyle(fontSize = 28.sp, fontWeight = FontWeight.Bold),
-        h4 = TextStyle(fontSize = 24.sp, fontWeight = FontWeight.Bold),
+        h2 = TextStyle(fontSize = 36.sp, fontWeight = FontWeight.Bold),
+        h3 = TextStyle(fontSize = 32.sp, fontWeight = FontWeight.Bold),
+        h4 = TextStyle(fontSize = 28.sp, fontWeight = FontWeight.Bold),
+        h5 = TextStyle(fontSize = 24.sp, fontWeight = FontWeight.Bold),
 
         default = TextStyle(
             fontSize = 20.sp,
