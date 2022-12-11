@@ -107,7 +107,7 @@ fun Theme(
         ),
 
         selectedMenuText = TextStyle(
-            fontSize = 36.sp,
+            fontSize = 24.sp,
             fontWeight = FontWeight.Black,
             color = PrimaryColor
         ),
