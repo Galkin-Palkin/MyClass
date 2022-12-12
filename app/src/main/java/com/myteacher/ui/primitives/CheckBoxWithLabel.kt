@@ -19,7 +19,7 @@ fun CheckBoxWithLabel(
     onCheckedChange: (Boolean) -> Unit,
     checkBoxModifier: Modifier = Modifier,
     enabled: Boolean = true,
-    label: (@Composable () -> Unit)? = null
+    label: @Composable () -> Unit
 ) {
     Row {
         CheckBox(
@@ -29,8 +29,6 @@ fun CheckBoxWithLabel(
             modifier = checkBoxModifier
         )
 
-        if (label != null) {
-            label()
-        }
+        label()
     }
 }

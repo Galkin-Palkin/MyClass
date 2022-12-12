@@ -11,7 +11,7 @@ fun RadioButtonWithLabel(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
-    label: (@Composable () -> Unit)? = null
+    label: @Composable () -> Unit
 ) {
     Row {
         RadioButton(
@@ -21,8 +21,6 @@ fun RadioButtonWithLabel(
             modifier = modifier
         )
 
-        if (label != null) {
-            label()
-        }
+        label()
     }
 }
