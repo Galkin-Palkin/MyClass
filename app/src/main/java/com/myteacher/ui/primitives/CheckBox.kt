@@ -21,7 +21,7 @@ fun CheckBox(
         colors = CheckboxDefaults.colors(
             checkedColor = Theme.colors.primary,
             uncheckedColor = Theme.colors.border,
-            checkmarkColor = Theme.colors.primaryText
+            checkmarkColor = Theme.colors.onPrimary
         )
     )
 }

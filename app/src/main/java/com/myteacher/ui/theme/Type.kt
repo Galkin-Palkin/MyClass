@@ -8,6 +8,7 @@ data class ThemeTypography(
     val h4: TextStyle,
     val h5: TextStyle,
     val default: TextStyle,
+    val small: TextStyle,
     val button: TextStyle,
     val menuText: TextStyle,
     val selectedMenuText: TextStyle,
