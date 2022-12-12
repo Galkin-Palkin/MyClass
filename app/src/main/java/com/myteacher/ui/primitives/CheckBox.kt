@@ -6,6 +6,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.myteacher.ui.theme.Theme
 
+//TODO add disabled color
 @Composable
 fun CheckBox(
     checked: Boolean,
