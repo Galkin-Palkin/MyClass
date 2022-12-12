@@ -14,13 +14,12 @@ import androidx.compose.ui.unit.dp
 import com.myteacher.ui.theme.Theme
 
 @Composable
-fun CheckBoxWithText(
+fun CheckBoxWithLabel(
     checked: Boolean,
     onCheckedChange: (Boolean) -> Unit,
     checkBoxModifier: Modifier = Modifier,
     enabled: Boolean = true,
-    text: String = "",
-    textStyle: TextStyle = Theme.typography.small
+    label: (@Composable () -> Unit)? = null
 ) {
     Row {
         CheckBox(
@@ -30,10 +29,8 @@ fun CheckBoxWithText(
             modifier = checkBoxModifier
         )
 
-        Text(
-            text = text,
-            style = textStyle.copy(textAlign = TextAlign.Left),
-            modifier = Modifier.align(alignment = Alignment.CenterVertically)
-        )
+        if (label != null) {
+            label()
+        }
     }
 }
