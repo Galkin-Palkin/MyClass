@@ -25,7 +25,8 @@ val LocalThemeColors = staticCompositionLocalOf {
         toggleButtonBackground = ToggleButtonBackgroundColor,
         blockedToggleButtonBackground = BlockedToggleButtonBackgroundColor,
         inputFieldBackground = InputFieldBackgroundColor,
-        bottomMenu = BottomMenuColor
+        bottomMenu = BottomMenuColor,
+        appHeaderBackground = AppHeaderBackgroundColor
     )
 }
 

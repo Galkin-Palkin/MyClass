@@ -12,6 +12,7 @@ val InputFieldBackgroundColor = Color(0xfff2f2f2)
 val ToggleButtonBackgroundColor = Color(0xfffafafa)
 val BlockedToggleButtonBackgroundColor = Color(0xffefefef)
 val BottomMenuColor = Color(0xfff9f9f9)
+val AppHeaderBackgroundColor = Color(0xfff9f9f9)
 
 @Immutable
 data class ThemeColors(
@@ -27,4 +28,5 @@ data class ThemeColors(
     val blockedToggleButtonBackground: Color,
     val inputFieldBackground: Color,
     val bottomMenu: Color,
+    val appHeaderBackground: Color
 )
