@@ -37,9 +37,7 @@ fun UserEntryForm(
         PasswordField(
             value = password,
             onValueChange = onPasswordChanged,
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(64.dp),
+            modifier = Modifier.fillMaxWidth(),
             header = stringResource(R.string.password)
         )
     }

@@ -1,6 +1,7 @@
 package com.myteacher.ui.primitives
 
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
@@ -25,7 +26,7 @@ fun CustomButton(
 ) {
     Button(
         onClick = onClick,
-        modifier = modifier,
+        modifier = modifier.border(1.dp, Theme.colors.border),
         enabled = enabled,
         contentPadding = contentPadding,
         colors = ButtonDefaults.buttonColors(
