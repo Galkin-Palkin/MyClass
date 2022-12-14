@@ -15,6 +15,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.myteacher.ui.theme.Theme
@@ -23,7 +24,8 @@ import com.myteacher.ui.theme.Theme
 fun InputField(
     value: String, onValueChange: (String) -> Unit, modifier: Modifier = Modifier,
     innerTextStyle: TextStyle = Theme.typography.inputFieldInnerText,
-    header: String = "", headerStyle: TextStyle = Theme.typography.inputFieldHeader
+    header: String = "", headerStyle: TextStyle = Theme.typography.inputFieldHeader,
+    visualTransformation: VisualTransformation = VisualTransformation.None
 ) {
     OutlinedTextField(
         value = value,
@@ -41,7 +43,8 @@ fun InputField(
             focusedLabelColor = Theme.colors.primaryText,
             unfocusedLabelColor = Theme.colors.primaryText,
             cursorColor = Theme.colors.primary
-        )
+        ),
+        visualTransformation = visualTransformation
     )
 }
 

@@ -2,4 +2,6 @@
     <string name="app_name">Мой учитель</string>
     <string name="user_agreement">Принять пользовательское соглашение</string>
     <string name="next">Далее</string>
+    <string name="login">Логин</string>
+    <string name="password">Пароль</string>
 </resources>
