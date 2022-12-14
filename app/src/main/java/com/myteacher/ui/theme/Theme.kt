@@ -44,7 +44,7 @@ val LocalThemeTypography = staticCompositionLocalOf {
         ),
 
         small = TextStyle(
-            fontSize = 16.sp,
+            fontSize = 12.sp,
             fontWeight = FontWeight.Bold,
             color = PrimaryTextColor
         ),
