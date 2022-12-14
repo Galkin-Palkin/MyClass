@@ -16,10 +16,10 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.myteacher.R
 import com.myteacher.ui.forms.UserEntryForm
-import com.myteacher.ui.primitives.CustomButton
 import com.myteacher.ui.primitives.TextButton
 import com.myteacher.ui.theme.Theme
 
+//TODO add navigation
 @Composable
 fun AuthorizationPage(
     navController: NavHostController,
