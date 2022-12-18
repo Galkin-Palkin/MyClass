@@ -9,4 +9,10 @@
     <string name="surname">Фамилия</string>
     <string name="name">Имя</string>
     <string name="patronymic">Отчество</string>
+    <string name="gender">Пол</string>
+
+    <string-array name="genders">
+        <item>М</item>
+        <item>Ж</item>
+    </string-array>
 </resources>

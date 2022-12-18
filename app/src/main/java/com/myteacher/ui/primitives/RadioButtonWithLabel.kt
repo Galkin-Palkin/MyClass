@@ -3,6 +3,7 @@ package com.myteacher.ui.primitives
 import androidx.compose.foundation.layout.Row
 import androidx.compose.material.RadioButton
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 
 @Composable
@@ -13,12 +14,14 @@ fun RadioButtonWithLabel(
     enabled: Boolean = true,
     label: @Composable () -> Unit
 ) {
-    Row {
-        RadioButton(
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        modifier = modifier
+    ) {
+        CustomRadioButton(
             selected = selected,
             onClick = onClick,
-            enabled = enabled,
-            modifier = modifier
+            enabled = enabled
         )
 
         label()
