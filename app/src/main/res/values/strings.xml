@@ -6,4 +6,7 @@
     <string name="password">Пароль</string>
     <string name="enter">Войти</string>
     <string name="registration">Регистрация</string>
+    <string name="surname">Фамилия</string>
+    <string name="name">Имя</string>
+    <string name="patronymic">Отчество</string>
 </resources>
