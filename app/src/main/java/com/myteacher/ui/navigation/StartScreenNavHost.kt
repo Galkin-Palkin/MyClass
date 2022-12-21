@@ -5,6 +5,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.myteacher.ui.screens.start.AuthorizationPage
+import ru.virtaulelectrics.common.BuildConfig
 
 @Composable
 fun StartScreenNavHost(navController: NavHostController) {
@@ -15,4 +16,6 @@ fun StartScreenNavHost(navController: NavHostController) {
         composable("contacts") {  }
         composable("") {}
     }
+
+
 }

@@ -10,6 +10,7 @@
     <string name="name">Имя</string>
     <string name="patronymic">Отчество</string>
     <string name="gender">Пол</string>
+    <string name="birth_date">Дата рождения</string>
 
     <string-array name="genders">
         <item>М</item>

@@ -14,13 +14,49 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringArrayResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import com.myteacher.R
 import com.myteacher.ui.primitives.RadioButtonWithLabel
 import com.myteacher.ui.theme.Theme
 
 @Composable
-fun GenderForm(
+fun HorizontalGenderForm(
+    modifier: Modifier = Modifier,
+    selectedGender: String,
+    onGenderSelected: (String) -> Unit
+) {
+    val genders = stringArrayResource(R.array.genders)
+
+    Row(
+        modifier = modifier,
+        verticalAlignment = Alignment.CenterVertically,
+        horizontalArrangement = Arrangement.Center
+    ) {
+        Text(
+            text = stringResource(R.string.gender),
+            style = Theme.typography.default
+        )
+
+        Row(
+            modifier = Modifier.selectableGroup(),
+            horizontalArrangement = Arrangement.Center
+        ) {
+            genders.forEach { gender ->
+                RadioButtonWithLabel(
+                    selected = (gender == selectedGender),
+                    onClick = { onGenderSelected(gender) }
+                ) {
+                    Text(
+                        text = gender,
+                        style = Theme.typography.default
+                    )
+                }
+            }
+        }
+    }
+}
+
+@Composable
+fun VerticalGenderForm(
     modifier: Modifier = Modifier,
     selectedGender: String,
     onGenderSelected: (String) -> Unit
@@ -33,7 +69,7 @@ fun GenderForm(
     ) {
         Text(
             text = stringResource(R.string.gender),
-            style = Theme.typography.h4.copy(color = Theme.colors.primaryText)
+            style = Theme.typography.default
         )
 
         Row(
@@ -57,13 +93,26 @@ fun GenderForm(
     }
 }
 
+
 @Composable
 @Preview
-fun GenderFormPreview() {
+fun HorizontalGenderFormPreview() {
     val startValue = stringArrayResource(R.array.genders)[0]
     val (selectedGender, onGenderSelected) = remember { mutableStateOf(startValue) }
 
-    GenderForm(
+    HorizontalGenderForm(
+        selectedGender = selectedGender,
+        onGenderSelected = onGenderSelected
+    )
+}
+
+@Composable
+@Preview
+fun VerticalGenderFormPreview() {
+    val startValue = stringArrayResource(R.array.genders)[0]
+    val (selectedGender, onGenderSelected) = remember { mutableStateOf(startValue) }
+
+    VerticalGenderForm(
         selectedGender = selectedGender,
         onGenderSelected = onGenderSelected
     )
