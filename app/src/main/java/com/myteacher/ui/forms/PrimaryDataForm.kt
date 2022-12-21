@@ -2,6 +2,7 @@ package com.myteacher.ui.forms
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
@@ -11,7 +12,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.myteacher.R
-import com.myteacher.ui.primitives.DatePickerWithLabelRow
+import com.myteacher.ui.primitives.DatePickerWithLabelColumn
 import com.myteacher.ui.theme.Theme
 import java.util.*
 
@@ -50,7 +51,7 @@ fun PrimaryDataForm(
                 onGenderSelected = onGenderSelected
             )
 
-            DatePickerWithLabelRow(dateState = dateState) {
+            DatePickerWithLabelColumn(dateState = dateState) {
                 Text(
                     text = stringResource(R.string.birth_date),
                     style = Theme.typography.default
@@ -70,7 +71,9 @@ fun PrimaryDataFormPreview() {
     val dateState = remember { mutableStateOf(Date()) }
 
     PrimaryDataForm(
-        modifier = Modifier.width(1024.dp),
+        modifier = Modifier
+            .width(720.dp)
+            .height(440.dp),
         surname = surname,
         onSurnameChanged = { surname = it },
         name = name,

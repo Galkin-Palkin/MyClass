@@ -11,6 +11,7 @@
     <string name="patronymic">Отчество</string>
     <string name="gender">Пол</string>
     <string name="birth_date">Дата рождения</string>
+    <string name="your_data">Ваши данные</string>
 
     <string-array name="genders">
         <item>М</item>
