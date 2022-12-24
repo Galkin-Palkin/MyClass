@@ -65,7 +65,7 @@ fun RegistrationPage(
 
         TextButton(
             onClick = {
-                navController.navigate("")
+                navController.navigate("") //TODO add nav route
             },
             text = stringResource(R.string.enter),
             modifier = Modifier

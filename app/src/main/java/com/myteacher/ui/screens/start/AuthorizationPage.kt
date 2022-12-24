@@ -45,7 +45,7 @@ fun AuthorizationPage(
 
         TextButton(
             onClick = {
-                navController.navigate("")
+                navController.navigate("") //TODO add nav route
             },
             text = stringResource(R.string.enter),
             modifier = Modifier
@@ -59,7 +59,7 @@ fun AuthorizationPage(
             text = stringResource(R.string.registration),
             style = Theme.typography.small,
             modifier = Modifier.clickable {
-                navController.navigate("")
+                navController.navigate("registration")
             }
         )
     }
@@ -72,7 +72,7 @@ fun AuthorizationPagePreview() {
     var password by remember { mutableStateOf("") }
 
     AuthorizationPage(
-        navController = NavHostController(LocalContext.current),
+        NavHostController(LocalContext.current),
         login = login,
         onLoginChanged = { login = it },
         password = password,
