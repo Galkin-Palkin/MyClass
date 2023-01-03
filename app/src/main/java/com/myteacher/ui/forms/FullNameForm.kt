@@ -10,17 +10,17 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.myteacher.R
 import com.myteacher.ui.primitives.InputField
+import com.myteacher.viewModels.forms.FullNameViewModel
 
 @Composable
 fun FullNameForm( //TODO add view model
     modifier: Modifier = Modifier,
-    surname: String,
-    onSurnameChanged: (String) -> Unit,
-    name: String,
-    onNameChanged: (String) -> Unit,
-    patronymic: String,
-    onPatronymicChanged: (String) -> Unit
+    viewModel: FullNameViewModel
 ) {
+    val surname by remember { mutableStateOf(viewModel.surname.value) }
+    val name by remember { mutableStateOf(viewModel.name.value) }
+    val patronymic by remember { mutableStateOf(viewModel.patronymic.value) }
+
     Column(
         modifier = modifier,
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -28,19 +28,19 @@ fun FullNameForm( //TODO add view model
     ) {
         InputField(
             value = surname,
-            onValueChange = onSurnameChanged,
+            onValueChange = { viewModel.setSurname(surname) },
             header = stringResource(R.string.surname)
         )
 
         InputField(
             value = name,
-            onValueChange = onNameChanged,
+            onValueChange = { viewModel.setName(name) },
             header = stringResource(R.string.name)
         )
 
         InputField(
             value = patronymic,
-            onValueChange = onPatronymicChanged,
+            onValueChange = { viewModel.setPatronymic(patronymic) },
             header = stringResource(R.string.patronymic)
         )
     }
@@ -49,16 +49,5 @@ fun FullNameForm( //TODO add view model
 @Composable
 @Preview
 fun FullNameFormPreview() {
-    var surname by remember { mutableStateOf("") }
-    var name by remember { mutableStateOf("") }
-    var patronymic by remember { mutableStateOf("") }
-
-    FullNameForm(
-        surname = surname,
-        onSurnameChanged = { surname = it },
-        name = name,
-        onNameChanged = { name = it},
-        patronymic = patronymic,
-        onPatronymicChanged = { patronymic = it }
-    )
+    FullNameForm(viewModel = FullNameViewModel())
 }
