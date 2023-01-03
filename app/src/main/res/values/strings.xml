@@ -26,4 +26,9 @@
         <item>WhatsApp</item>
         <item>ВКонтакте</item>
     </string-array>
+
+    <string-array name="roles">
+        <item>Учитель</item>
+        <item>Родитель</item>
+    </string-array>
 </resources>

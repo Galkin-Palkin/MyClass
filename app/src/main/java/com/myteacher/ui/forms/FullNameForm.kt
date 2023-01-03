@@ -12,7 +12,7 @@ import com.myteacher.R
 import com.myteacher.ui.primitives.InputField
 
 @Composable
-fun FullNameForm(
+fun FullNameForm( //TODO add view model
     modifier: Modifier = Modifier,
     surname: String,
     onSurnameChanged: (String) -> Unit,

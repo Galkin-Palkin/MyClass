@@ -9,7 +9,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringArrayResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -47,7 +46,7 @@ fun ContactsForm(
                 DropMenu(
                     list = stringArrayResource(R.array.contacts).toList(),
                     onSelectedChange = { selectedItem = it },
-                    placeholder = stringResource(R.string.contact_choice),
+                    placeholder = selectedItem,
                     toDisplay = { return@DropMenu it }
                 )
 

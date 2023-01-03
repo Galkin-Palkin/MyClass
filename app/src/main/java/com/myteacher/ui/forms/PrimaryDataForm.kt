@@ -17,7 +17,7 @@ import com.myteacher.ui.theme.Theme
 import java.util.*
 
 @Composable
-fun PrimaryDataForm(
+fun PrimaryDataForm( //TODO add view model
     modifier: Modifier = Modifier,
     surname: String,
     onSurnameChanged: (String) -> Unit,
