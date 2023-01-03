@@ -12,9 +12,18 @@
     <string name="gender">Пол</string>
     <string name="birth_date">Дата рождения</string>
     <string name="your_data">Ваши данные</string>
+    <string name="contact_choice">Выберите контакт</string>
 
     <string-array name="genders">
         <item>М</item>
         <item>Ж</item>
+    </string-array>
+
+    <string-array name="contacts">
+        <item>Телефон</item>
+        <item>Email</item>
+        <item>Telegram</item>
+        <item>WhatsApp</item>
+        <item>ВКонтакте</item>
     </string-array>
 </resources>

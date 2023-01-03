@@ -3,6 +3,7 @@ package com.myteacher.ui.fields
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.Text
@@ -27,6 +28,8 @@ fun ContactField(
     onMinusClicked: () -> Unit,
     textStyle: TextStyle = Theme.typography.inputFieldInnerText
 ) {
+    val contact by remember(contactValue) { mutableStateOf(contactValue) }
+
     Row(
         modifier = modifier.padding(8.dp),
         verticalAlignment = Alignment.CenterVertically,
@@ -38,15 +41,18 @@ fun ContactField(
         )
 
         NoBorderedInputField(
-            text = contactValue,
+            text = contact,
             onTextChange = onContactChange
         )
 
-        IconButton(onClick = onMinusClicked) {
+        IconButton(
+            onClick = onMinusClicked,
+            modifier = Modifier.width(32.dp)
+        ) {
             Icon(
                 imageVector = ImageVector.vectorResource(R.drawable.ic_minus),
                 contentDescription = null,
-                tint = Theme.colors.primary
+                tint = Theme.colors.primary,
             )
         }
     }
@@ -55,12 +61,10 @@ fun ContactField(
 @Composable
 @Preview
 fun ContactFieldPreview() {
-    var contactValue by remember { mutableStateOf("") }
-
     ContactField(
         contactName = "Телефон",
-        contactValue = contactValue,
-        onContactChange = { contactValue = it },
+        contactValue = "",
+        onContactChange = { },
         onMinusClicked = { }
     )
 }

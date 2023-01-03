@@ -13,8 +13,9 @@ import com.myteacher.ui.theme.Theme
 @Composable
 fun <T> DropMenu(
     list: List<T>,
-    selectedState: MutableState<T>,
+    onSelectedChange: (T) -> Unit,
     placeholder: String,
+    toDisplay: (T) -> String
 ) {
     var expanded by remember { mutableStateOf(false) }
     var selected by remember { mutableStateOf(placeholder) }
@@ -36,11 +37,11 @@ fun <T> DropMenu(
         ) {
             list.forEach {
                 Text(
-                    text = it.toString(),
+                    text = toDisplay(it),
                     style = Theme.typography.default,
                     modifier = Modifier.clickable {
-                        selectedState.value = it
-                        selected = it.toString()
+                        onSelectedChange(it)
+                        selected = toDisplay(it)
                         expanded = false
                     }
                 )
@@ -52,11 +53,16 @@ fun <T> DropMenu(
 @Composable
 @Preview
 fun DropMenuPreview() {
-    val state = remember { mutableStateOf("") }
+    var item by remember { mutableStateOf("") }
 
-    DropMenu(
-        list = listOf("Отстутствуют", "Под заключением", "Что-то ещё"),
-        selectedState = state,
-        placeholder = "Выбрать"
-    )
+    Column {
+        DropMenu(
+            list = listOf("Отстутствуют", "Под заключением", "Что-то ещё"),
+            onSelectedChange = { item = it },
+            placeholder = "Выбрать",
+            toDisplay = { return@DropMenu it }
+        )
+
+        Text(item)
+    }
 }

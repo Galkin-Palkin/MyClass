@@ -18,6 +18,7 @@ import com.myteacher.R
 import com.myteacher.ui.primitives.RadioButtonWithLabel
 import com.myteacher.ui.theme.Theme
 
+//TODO change name to GenderField
 @Composable
 fun HorizontalGenderForm(
     modifier: Modifier = Modifier,
@@ -55,6 +56,7 @@ fun HorizontalGenderForm(
     }
 }
 
+//TODO remove verticalGenderForm
 @Composable
 fun VerticalGenderForm(
     modifier: Modifier = Modifier,
