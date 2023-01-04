@@ -18,11 +18,11 @@ import java.util.*
 fun DataPage(
     modifier: Modifier = Modifier,
     surname: String,
-    onSurnameChanged: (String) -> Unit,
+    onSurnameChange: (String) -> Unit,
     name: String,
-    onNameChanged: (String) -> Unit,
+    onNameChange: (String) -> Unit,
     patronymic: String,
-    onPatronymicChanged: (String) -> Unit,
+    onPatronymicChange: (String) -> Unit,
     selectedGender: String,
     onGenderSelected: (String) -> Unit,
     dateState: MutableState<Date>
@@ -39,11 +39,11 @@ fun DataPage(
 
         PrimaryDataForm(
             surname = surname,
-            onSurnameChanged = onSurnameChanged,
+            onSurnameChange = onSurnameChange,
             name = name,
-            onNameChanged = onNameChanged,
+            onNameChange = onNameChange,
             patronymic = patronymic,
-            onPatronymicChanged = onPatronymicChanged,
+            onPatronymicChange = onPatronymicChange,
             selectedGender = selectedGender,
             onGenderSelected = onGenderSelected,
             dateState = dateState
@@ -78,11 +78,11 @@ fun DataPagePreview() {
     DataPage(
         modifier = Modifier.width(720.dp),
         surname = surname,
-        onSurnameChanged = { surname = it },
+        onSurnameChange = { surname = it },
         name = name,
-        onNameChanged = { name = it },
+        onNameChange = { name = it },
         patronymic = patronymic,
-        onPatronymicChanged = { patronymic = it },
+        onPatronymicChange = { patronymic = it },
         selectedGender = selectedGender,
         onGenderSelected = { selectedGender = it },
         dateState = dateState

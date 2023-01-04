@@ -7,13 +7,13 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.Text
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.myteacher.R
 import com.myteacher.ui.primitives.NoBorderedInputField
@@ -22,26 +22,24 @@ import com.myteacher.ui.theme.Theme
 @Composable
 fun ContactField(
     modifier: Modifier = Modifier,
-    contactName: String,
-    contactValue: String,
+    contactType: String,
+    contactValue: MutableState<String>,
     onContactChange: (String) -> Unit,
     onMinusClicked: () -> Unit,
     textStyle: TextStyle = Theme.typography.inputFieldInnerText
 ) {
-    val contact by remember(contactValue) { mutableStateOf(contactValue) }
-
     Row(
         modifier = modifier.padding(8.dp),
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
         Text(
-            text = contactName,
+            text = contactType,
             style = textStyle
         )
 
         NoBorderedInputField(
-            text = contact,
+            text = contactValue.value,
             onTextChange = onContactChange
         )
 
@@ -56,15 +54,4 @@ fun ContactField(
             )
         }
     }
-}
-
-@Composable
-@Preview
-fun ContactFieldPreview() {
-    ContactField(
-        contactName = "Телефон",
-        contactValue = "",
-        onContactChange = { },
-        onMinusClicked = { }
-    )
 }

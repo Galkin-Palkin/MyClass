@@ -1,4 +1,4 @@
-package com.myteacher.ui.forms
+package com.myteacher.ui.fields
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -10,17 +10,17 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.myteacher.R
 import com.myteacher.ui.primitives.InputField
-import com.myteacher.viewModels.forms.FullNameViewModel
 
 @Composable
-fun FullNameForm( //TODO add view model
+fun FullNameField(
     modifier: Modifier = Modifier,
-    viewModel: FullNameViewModel
+    surname: String,
+    onSurnameChange: (String) -> Unit,
+    name: String,
+    onNameChange: (String) -> Unit,
+    patronymic: String,
+    onPatronymicChange: (String) -> Unit,
 ) {
-    val surname by remember { mutableStateOf(viewModel.surname.value) }
-    val name by remember { mutableStateOf(viewModel.name.value) }
-    val patronymic by remember { mutableStateOf(viewModel.patronymic.value) }
-
     Column(
         modifier = modifier,
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -28,19 +28,19 @@ fun FullNameForm( //TODO add view model
     ) {
         InputField(
             value = surname,
-            onValueChange = { viewModel.setSurname(surname) },
+            onValueChange = onSurnameChange,
             header = stringResource(R.string.surname)
         )
 
         InputField(
             value = name,
-            onValueChange = { viewModel.setName(name) },
+            onValueChange = onNameChange,
             header = stringResource(R.string.name)
         )
 
         InputField(
             value = patronymic,
-            onValueChange = { viewModel.setPatronymic(patronymic) },
+            onValueChange = onPatronymicChange,
             header = stringResource(R.string.patronymic)
         )
     }
@@ -48,6 +48,17 @@ fun FullNameForm( //TODO add view model
 
 @Composable
 @Preview
-fun FullNameFormPreview() {
-    FullNameForm(viewModel = FullNameViewModel())
+fun FullNameFieldPreview() {
+    var surname by remember { mutableStateOf("")}
+    var name by remember { mutableStateOf("")}
+    var patronymic by remember { mutableStateOf("")}
+
+    FullNameField(
+        surname = surname,
+        onSurnameChange = { surname = it },
+        name = name,
+        onNameChange = { name = it},
+        patronymic = patronymic,
+        onPatronymicChange = { patronymic = it }
+    )
 }
