@@ -13,7 +13,6 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -30,21 +29,20 @@ import java.util.*
 @Composable
 fun DatePicker(
     modifier: Modifier = Modifier,
-    dateState: MutableState<Date>,
+    dateState: Date?,
     context: Context = LocalContext.current,
-    onDateChange: () -> Unit = {}
+    onDateChange: (Date) -> Unit = {}
 ) {
     val calendar = Calendar.getInstance()
     val year: Int = calendar.get(Calendar.YEAR)
     val month: Int = calendar.get(Calendar.MONTH)
     val day: Int = calendar.get(Calendar.DAY_OF_MONTH)
-    val date = remember { mutableStateOf("ДД.ММ.ГГГГ") }
+    val date = remember { mutableStateOf(dateState?.toString() ?: "ДД.ММ.ГГГГ") }
     val datePickerDialog = DatePickerDialog(
         context,
         { _: DatePicker, dialogYear: Int, dialogMonth: Int, dialogDay: Int ->
             date.value = "${dialogDay / 10}${dialogDay % 10}.${(dialogMonth + 1) / 10}${(dialogMonth + 1) % 10}.$dialogYear"
-            dateState.value = GregorianCalendar(dialogYear, dialogMonth, dialogDay).time
-            onDateChange()
+            onDateChange(GregorianCalendar(dialogYear, dialogMonth, dialogDay).time)
         }, year, month, day
     )
 

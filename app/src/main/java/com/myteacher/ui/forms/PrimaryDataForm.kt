@@ -1,9 +1,6 @@
 package com.myteacher.ui.forms
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -13,7 +10,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.myteacher.R
 import com.myteacher.ui.fields.FullNameField
-import com.myteacher.ui.primitives.DatePickerWithLabelColumn
+import com.myteacher.ui.primitives.CustomButton
+import com.myteacher.ui.primitives.VerticalDatePickerWithLabel
 import com.myteacher.ui.theme.Theme
 import java.util.*
 
@@ -28,7 +26,9 @@ fun PrimaryDataForm(
     onPatronymicChange: (String) -> Unit,
     selectedGender: String,
     onGenderSelected: (String) -> Unit,
-    dateState: MutableState<Date>
+    dateState: Date,
+    onDateSelected: (Date) -> Unit,
+    onClick: () -> Unit
 ) {
     Column(
         modifier = modifier,
@@ -51,14 +51,31 @@ fun PrimaryDataForm(
                 selectedGender = selectedGender,
                 onGenderSelected = onGenderSelected
             )
-            //TODO bug maybe here (not updating value)
-            DatePickerWithLabelColumn(dateState = dateState) {
+
+            VerticalDatePickerWithLabel(
+                dateState = dateState,
+                onDateChange = onDateSelected
+            ) {
                 Text(
                     text = stringResource(R.string.birth_date),
                     style = Theme.typography.default
                 )
             }
         }
+
+
+        CustomButton(
+            modifier = Modifier
+                .height(56.dp)
+                .fillMaxWidth(),
+            onClick = onClick,
+            content = {
+                Text(
+                    text = stringResource(R.string.next),
+                    style = Theme.typography.button.copy(color = Theme.colors.onPrimary)
+                )
+            }
+        )
     }
 }
 
@@ -69,7 +86,7 @@ fun PrimaryDataFormPreview() {
     var name by remember { mutableStateOf("")}
     var patronymic by remember { mutableStateOf("")}
     var selectedGender by remember { mutableStateOf("М")}
-    val dateState = remember { mutableStateOf(Date()) }
+    var date by remember { mutableStateOf(Date()) }
 
     Column {
         PrimaryDataForm(
@@ -84,9 +101,11 @@ fun PrimaryDataFormPreview() {
             onPatronymicChange = { patronymic = it },
             selectedGender = selectedGender,
             onGenderSelected = { selectedGender = it },
-            dateState = dateState
+            dateState = date,
+            onDateSelected = { date = it },
+            onClick = {}
         )
 
-        Text(dateState.value.toString())
+        Text(date.toString())
     }
 }

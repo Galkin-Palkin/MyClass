@@ -3,10 +3,7 @@ package com.myteacher.ui.primitives
 import android.content.Context
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -19,11 +16,11 @@ import com.myteacher.ui.theme.Theme
 import java.util.*
 
 @Composable
-fun DatePickerWithLabelColumn(
+fun VerticalDatePickerWithLabel(
     modifier: Modifier = Modifier,
-    dateState: MutableState<Date>,
+    dateState: Date,
     context: Context = LocalContext.current,
-    onDateChange: () -> Unit = {},
+    onDateChange: (Date) -> Unit,
     label: @Composable () -> Unit
 ) {
     Column(
@@ -43,11 +40,11 @@ fun DatePickerWithLabelColumn(
 }
 
 @Composable
-fun DatePickerWithLabelRow(
+fun HorizontalDatePickerWithLabel(
     modifier: Modifier = Modifier,
-    dateState: MutableState<Date>,
+    dateState: Date,
     context: Context = LocalContext.current,
-    onDateChange: () -> Unit = {},
+    onDateChange: (Date) -> Unit,
     label: @Composable () -> Unit
 ) {
     Row(
@@ -68,11 +65,12 @@ fun DatePickerWithLabelRow(
 
 @Composable
 @Preview
-fun DatePickerWithLabelRowPreview() {
-    val state = remember { mutableStateOf(Date()) }
+fun HorizontalDatePickerWithLabelPreview() {
+    var date by remember { mutableStateOf(Date()) }
 
-    DatePickerWithLabelRow(
-        dateState = state
+    HorizontalDatePickerWithLabel(
+        dateState = date,
+        onDateChange = { date = it }
     ) {
         Text(
             text = stringResource(R.string.birth_date),
@@ -84,11 +82,12 @@ fun DatePickerWithLabelRowPreview() {
 
 @Composable
 @Preview
-fun DatePickerWithLabelColumnPreview() {
-    val state = remember { mutableStateOf(Date()) }
+fun VerticalDatePickerWithLabelPreview() {
+    var date by remember { mutableStateOf(Date()) }
 
-    DatePickerWithLabelColumn(
-        dateState = state
+    VerticalDatePickerWithLabel(
+        dateState = date,
+        onDateChange = { date = it }
     ) {
         Text(
             text = stringResource(R.string.birth_date),
