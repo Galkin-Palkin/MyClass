@@ -7,6 +7,12 @@ object Routes {
         object Authorization: Page("authorization_page")
 
         object Registration: Page("registration_page")
+
+        object Data: Page("data_page")
+
+        object Contacts: Page("contacts_page")
+
+        object Role: Page("role_page")
     }
 
     sealed class Screen(val route: String) {
