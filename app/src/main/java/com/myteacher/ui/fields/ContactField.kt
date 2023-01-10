@@ -8,7 +8,6 @@ import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -23,7 +22,7 @@ import com.myteacher.ui.theme.Theme
 fun ContactField(
     modifier: Modifier = Modifier,
     contactType: String,
-    contactValue: MutableState<String>,
+    contactValue: String,
     onContactChange: (String) -> Unit,
     onMinusClicked: () -> Unit,
     textStyle: TextStyle = Theme.typography.inputFieldInnerText
@@ -39,7 +38,7 @@ fun ContactField(
         )
 
         NoBorderedInputField(
-            text = contactValue.value,
+            text = contactValue,
             onTextChange = onContactChange
         )
 
