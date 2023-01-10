@@ -14,8 +14,8 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.myteacher.R
-import com.myteacher.data.model.humanInfo.Gender
 import com.myteacher.ui.forms.PrimaryDataForm
+import com.myteacher.ui.navigation.Routes
 import com.myteacher.ui.screens.viewModel.HumanInfoViewModel
 import com.myteacher.ui.theme.Theme
 
@@ -41,12 +41,11 @@ fun DataPage(navController: NavHostController) {
                 patronymic = viewModel.patronymic.collectAsState().value,
                 onPatronymicChange = { viewModel.patronymic.value = it },
                 selectedGender = viewModel.gender.collectAsState().value.value,
-                onGenderSelected = { viewModel.gender.value = Gender(it) }, //TODO weird thing
+                onGenderSelected = { viewModel.setGender(it) },
                 dateState = viewModel.birthDate.collectAsState().value,
                 onDateSelected = { viewModel.birthDate.value = it },
                 onClick = {
-                    navController.navigate("")
-                    //TODO add navigation
+                    navController.navigate(Routes.Page.Contacts.route)
                 }
             )
         }

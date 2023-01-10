@@ -28,7 +28,11 @@ class HumanInfoViewModel : ViewModel() {
 
     private val _gender = MutableStateFlow(humanInfo.gender)
 
-    val gender get() = _gender
+    val gender: StateFlow<Gender> get() = _gender
+
+    fun setGender(value: String) {
+        _gender.value = Gender(value)
+    }
 
     private val _contacts = MutableStateFlow(humanInfo.contacts.toMutableList())
 
