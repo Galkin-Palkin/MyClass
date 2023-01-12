@@ -17,6 +17,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import com.myteacher.R
 import com.myteacher.ui.forms.UserEntryForm
+import com.myteacher.ui.navigation.Routes
 import com.myteacher.ui.primitives.CheckBoxWithLabel
 import com.myteacher.ui.screens.viewModel.HumanInfoViewModel
 import com.myteacher.ui.theme.Theme
@@ -45,7 +46,7 @@ fun RegistrationPage(navController: NavHostController) {
                 password = passwordSalt,
                 onPasswordChanged = { viewModel.passwordSalt.value = it },
                 modifier = Modifier.fillMaxWidth(),
-                onClick = { navController.navigate("") }, //TODO make navigation to data
+                onClick = { navController.navigate(Routes.Screen.FirstData.route) },
                 betweenContent = {
                     CheckBoxWithLabel(
                         checked = checked,

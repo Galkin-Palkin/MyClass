@@ -44,25 +44,22 @@ fun PrimaryDataForm(
             onPatronymicChange = onPatronymicChange
         )
 
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            HorizontalGenderForm(
-                selectedGender = selectedGender,
-                onGenderSelected = onGenderSelected
-            )
+        HorizontalGenderForm(
+            selectedGender = selectedGender,
+            onGenderSelected = onGenderSelected
+        )
 
-            VerticalDatePickerWithLabel(
-                dateState = dateState,
-                onDateChange = onDateSelected
-            ) {
-                Text(
-                    text = stringResource(R.string.birth_date),
-                    style = Theme.typography.default
-                )
-            }
+        VerticalDatePickerWithLabel(
+            dateState = dateState,
+            onDateChange = onDateSelected
+        ) {
+            Text(
+                text = stringResource(R.string.birth_date),
+                style = Theme.typography.default
+            )
         }
 
+        Spacer(modifier = Modifier.weight(1f))
 
         CustomButton(
             modifier = Modifier

@@ -3,7 +3,6 @@ package com.myteacher.ui.navigation
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
-import com.myteacher.ui.screens.viewModel.HumanInfoViewModel
 
 @Composable
 fun MainNavHost(navController: NavHostController) {
@@ -13,5 +12,7 @@ fun MainNavHost(navController: NavHostController) {
         route = Routes.MainRoute
     ) {
         loginScreenNavGraph(navController = navController)
+
+        firstDataScreenNavGraph(navController = navController)
     }
 }

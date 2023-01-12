@@ -4,23 +4,26 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.material.Divider
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
-import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringArrayResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.myteacher.R
 import com.myteacher.data.model.humanInfo.Contact
 import com.myteacher.ui.fields.ContactField
-import com.myteacher.ui.primitives.CustomButton
 import com.myteacher.ui.primitives.DropMenu
+import com.myteacher.ui.primitives.TextButton
 import com.myteacher.ui.primitives.ThemeCard
+import com.myteacher.ui.screens.viewModel.HumanInfoViewModel
 import com.myteacher.ui.theme.Theme
 
+//TODO fix size bug
 //TODO fix alignment and arrangement
 //TODO fix minus button size
 //TODO fix text displaying (now its transparent)
@@ -42,7 +45,6 @@ fun ContactsForm(
     ) {
         ThemeCard(modifier = Modifier.fillMaxWidth()) {
             Column(
-                modifier = Modifier.fillMaxSize(),
                 verticalArrangement = Arrangement.spacedBy(8.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
@@ -94,15 +96,10 @@ fun ContactsForm(
             }
         }
 
-        CustomButton(
+        TextButton(
             modifier = Modifier.fillMaxWidth(),
             onClick = onButtonClick,
-            content = {
-                Text(
-                    text = buttonText,
-                    style = Theme.typography.button
-                )
-            }
+            text = buttonText
         )
     }
 }
@@ -110,5 +107,16 @@ fun ContactsForm(
 @Composable
 @Preview
 fun ContactsFormPreview() {
-    //TODO
+    val viewModel: HumanInfoViewModel = viewModel()
+    val contacts by viewModel.contacts.collectAsState()
+
+    ContactsForm(
+        contacts = contacts,
+        onContactAdd = { viewModel.addContact(it) },
+        onContactDelete = { viewModel.removeContact(it) },
+        onContactChange = { contact, value -> viewModel.changeContact(contact, value) },
+        buttonText = stringResource(R.string.next)
+    ) {
+
+    }
 }

@@ -22,7 +22,7 @@ fun ContactsPage(navController: NavHostController) {
 
     ScreenPattern {
         ContactsForm(
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier,
             contacts = contacts,
             onContactAdd = { type -> viewModel.addContact(type) },
             onContactDelete = { contact -> viewModel.removeContact(contact) },
