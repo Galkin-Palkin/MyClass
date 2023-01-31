@@ -7,6 +7,7 @@ mod Human {
         contacts: Contacts,
         role_data: HumanRoleData,
         identity_document: IdentityDocument,
+        registration: Registration,
         user: Option<User>
     }
 }

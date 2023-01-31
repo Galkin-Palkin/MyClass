@@ -1,6 +1,6 @@
 mod Human {
     pub enum ChildInstitutionData {
-        School(String),
-        KinderGarten(String)
+        School(i32), // i32 - class id
+        KinderGarten
     }
 }

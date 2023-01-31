@@ -1,6 +1,7 @@
 mod Human {
     pub enum CriminalRecord {
         NoCriminalRecord,
-        Judged
+        Judged,
+        NowInCustody
     }
 }
