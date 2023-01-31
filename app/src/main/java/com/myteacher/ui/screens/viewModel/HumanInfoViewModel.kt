@@ -34,22 +34,23 @@ class HumanInfoViewModel : ViewModel() {
         _gender.value = Gender(value)
     }
 
-    private val _contacts = MutableStateFlow(humanInfo.contacts.toMutableList())
+    private val _contacts = MutableStateFlow(humanInfo.contacts)
 
     val contacts: StateFlow<List<Contact>> get() = _contacts
 
-    fun addContact(type: String) {
-        _contacts.value.add(Contact(type, "", UUID.randomUUID()))
+    suspend fun addContact(type: String) {
+        _contacts.emit(contacts.value + Contact(type, "", UUID.randomUUID()))
     }
 
-    fun removeContact(contact: Contact) {
-        _contacts.value.remove(contact)
+    suspend fun removeContact(contact: Contact) {
+        _contacts.emit(contacts.value - contact)
     }
 
-    fun changeContact(contact: Contact, value: String) {
+    suspend fun changeContact(contact: Contact, value: String) {
         val id = _contacts.value.indexOfFirst { _contact -> _contact.id == contact.id }
-
-        _contacts.value[id] = contact.copy(value = value)
+        val new = _contacts.value.toMutableList()
+        new[id] = contact.copy(value = value)
+        _contacts.emit(new)
     }
 
     private val _login =

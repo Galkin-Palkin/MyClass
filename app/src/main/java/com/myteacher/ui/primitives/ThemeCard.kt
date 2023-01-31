@@ -1,9 +1,9 @@
 package com.myteacher.ui.primitives
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.Card
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -21,13 +21,12 @@ fun ThemeCard(
     Card(
         modifier = modifier
             .clip(Theme.shapes.default)
-            .background(Theme.colors.surface)
-            .border(1.dp, Theme.colors.border),
-        elevation = Theme.elevation.default
+            .background(Theme.colors.surface),
+        elevation = Theme.elevation.default,
+        border = BorderStroke(1.dp, Theme.colors.border)
     ) {
         Box(
-            modifier = modifier.fillMaxSize(),
-            contentAlignment = Alignment.Center
+            contentAlignment = Alignment.Center,
         ) {
             content()
         }

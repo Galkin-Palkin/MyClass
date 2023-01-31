@@ -8,9 +8,12 @@ import com.myteacher.ui.theme.Theme
 
 @Composable
 fun PasswordField(
-    value: String, onValueChange: (String) -> Unit, modifier: Modifier = Modifier,
+    value: String,
+    onValueChange: (String) -> Unit,
+    modifier: Modifier = Modifier,
     innerTextStyle: TextStyle = Theme.typography.inputFieldInnerText,
-    header: String = "", headerStyle: TextStyle = Theme.typography.inputFieldHeader,
+    header: String = "",
+    headerStyle: TextStyle = Theme.typography.inputFieldHeader,
 ) {
     InputField(
         value = value,

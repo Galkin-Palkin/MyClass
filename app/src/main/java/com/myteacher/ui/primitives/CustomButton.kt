@@ -26,7 +26,7 @@ fun CustomButton(
 ) {
     Button(
         onClick = onClick,
-        modifier = modifier.border(1.dp, Theme.colors.border),
+        modifier = modifier,
         enabled = enabled,
         contentPadding = contentPadding,
         colors = ButtonDefaults.buttonColors(
@@ -39,7 +39,8 @@ fun CustomButton(
             defaultElevation = Theme.elevation.default,
             pressedElevation = Theme.elevation.default,
             focusedElevation = Theme.elevation.default,
-        )
+        ),
+        border = BorderStroke(1.dp, Theme.colors.border)
     )
 }
 

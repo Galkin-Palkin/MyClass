@@ -22,6 +22,7 @@ import com.myteacher.ui.primitives.TextButton
 import com.myteacher.ui.primitives.ThemeCard
 import com.myteacher.ui.screens.viewModel.HumanInfoViewModel
 import com.myteacher.ui.theme.Theme
+import kotlinx.coroutines.launch
 
 //TODO fix size bug
 //TODO fix alignment and arrangement
@@ -41,12 +42,15 @@ fun ContactsForm(
     var selectedItem by remember { mutableStateOf(contactTypes[0]) }
 
     Column(
-        modifier = modifier
+        modifier = modifier.defaultMinSize(400.dp)
     ) {
-        ThemeCard(modifier = Modifier.fillMaxWidth()) {
+        ThemeCard(
+            modifier = Modifier
+                .fillMaxWidth()
+        ) {
             Column(
                 verticalArrangement = Arrangement.spacedBy(8.dp),
-                horizontalAlignment = Alignment.CenterHorizontally
+                horizontalAlignment = Alignment.CenterHorizontally,
             ) {
                 Row(
                     modifier = Modifier
@@ -77,7 +81,8 @@ fun ContactsForm(
                 Divider()
 
                 Column(
-                    modifier = Modifier.fillMaxWidth(),
+                    modifier = Modifier
+                        .fillMaxWidth(),
                     horizontalAlignment = Alignment.CenterHorizontally,
                     verticalArrangement = Arrangement.SpaceEvenly
                 ) {
@@ -89,12 +94,14 @@ fun ContactsForm(
                             onMinusClicked = { onContactDelete(contact) },
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .height(48.dp)
+                                .height(56.dp)
                         )
                     }
                 }
             }
         }
+
+        Spacer(modifier = Modifier.height(32.dp))
 
         TextButton(
             modifier = Modifier.fillMaxWidth(),
@@ -109,12 +116,23 @@ fun ContactsForm(
 fun ContactsFormPreview() {
     val viewModel: HumanInfoViewModel = viewModel()
     val contacts by viewModel.contacts.collectAsState()
+    val scope = rememberCoroutineScope()
 
     ContactsForm(
         contacts = contacts,
-        onContactAdd = { viewModel.addContact(it) },
-        onContactDelete = { viewModel.removeContact(it) },
-        onContactChange = { contact, value -> viewModel.changeContact(contact, value) },
+        onContactAdd = {
+                       scope.launch {
+                           viewModel.addContact(it)
+                       }
+        },
+        onContactDelete = {
+                          scope.launch {
+                              viewModel.removeContact(it)
+                          }
+        },
+        onContactChange = { contact, value -> scope.launch {
+            viewModel.changeContact(contact, value)
+        } },
         buttonText = stringResource(R.string.next)
     ) {
 
